@@ -1,3 +1,4 @@
+<<<<<<< HEAD
    <!DOCTYPE html>
 
 <html>
@@ -46,4 +47,54 @@
     <script src="script.js"></script>
 </body>
 
+=======
+   <!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Pac-Man</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    
+    <div class="game-container hidden">
+        <canvas id="canvas">(Fallback Content)</canvas>
+    </div>
+
+    <div class='main-menu'>
+      
+        
+        <button id = "howToPlay" onclick="show()">How To Play</button>
+
+        <script>
+            function show() {
+                let how = "https://www.godmindedgaming.com/images/slang/arrow_keys.png"
+
+                const pic = document.createElement('img')
+                pic.setAttribute("src", how)
+
+                document.body.appendChild(pic)
+            }
+
+
+
+        </script>
+
+
+        <button id="start-button">Start</button>
+
+    </div>
+
+
+
+    <script src="script.js"></script>
+</body>
+
+>>>>>>> 1f337cb1cfd631ed004173ae561eeda268889dc5
 </html>
