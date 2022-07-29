@@ -1,0 +1,66 @@
+body {
+    background:#F2A444;
+    color: #F25C05; 
+     color: #D90404; 
+     color: #F2F2F2; 
+    
+    
+    
+}
+
+
+
+
+.main-menu {
+    background:url("/Img/p.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 200%;
+    display: grid;
+    padding-top: 150px;
+    justify-content: center;
+    width: 1200px;
+    height: 700px;
+    color: #c0c0c0;
+    border-radius: 25px;
+    margin: 0 auto;
+  
+
+}
+
+h1 {
+    display: grid;
+    justify-content: center;
+    padding: 60px;
+    color: #ea3c53;
+}
+
+
+
+#howToPlay{
+    height: 80px;
+}
+
+#start-button{
+    height:40px;
+    width: 200px;
+    border-radius: 25px;
+    display: grid;
+    justify-content: center;
+}
+
+
+#canvas {
+    background: #556b2f;
+    background-size: cover;
+    display: grid;
+    
+    margin: 0 auto;
+    margin-top: 100px;
+    width: 1500px;
+}
+
+/* .hidden needs to be below canvas */
+.hidden {
+    display: none;
+}
