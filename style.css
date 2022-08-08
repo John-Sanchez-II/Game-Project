@@ -2,7 +2,7 @@ body {
   background: #f2994b;
 }
 
-.main-menu {
+.front-page {
   background: url("/Game-Project/Img/p.jpg");
   background-repeat: no-repeat;
   background-position: center;
@@ -28,7 +28,7 @@ h1 {
   height: 80px;
 }
 
-#start-button {
+#start-B {
   height: 40px;
   width: 200px;
   border-radius: 25px;
@@ -40,15 +40,19 @@ h1 {
   background: #074073;
   background-size: cover;
   display: grid;
-
   margin: 0 auto;
   margin-top: 100px;
-  /* width: 1500px; */
+}
+.score {
+  position: absolute;
+  color: white;
+  padding-left: 1000px;
+  font-size: xx-large;
+  font-family: "MedievalSharp", cursive;
 }
 
-/* .hidden needs to be below canvas  */
-.hidden {
+
+ .hidden {
     display: none;
   }
-  
-
+   

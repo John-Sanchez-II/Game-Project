@@ -1,31 +1,21 @@
-const canvas = document.getElementById("canvas");
-const pacman = {
-  x: 100,
-  y: 100,
-  w: 23,
-  h: 23,
-  up: false,
-  down: false,
-  left: false,
-  right: false,
-  color: "yellow",
-  speed: 5,
-  draw: function () {
-    if (pacman.left) pacman.x -= pacman.speed;
-    if (pacman.right) pacman.x += pacman.speed;
-    if (pacman.up) pacman.y -= pacman.speed;
-    if (pacman.down) pacman.y += pacman.speed;
-  },
-};
+import {pacman} from "./Pacman.js"
+import {inky} from "./Enemies.js"
+import {fruit} from "./Collections.js"
+import {collision,paused,setPaused} from "./Helper.js"
 
-// create enemy object
-const inky = {
-  x: 100,
-  y: 200,
-  w: 20,
-  h: 20,
-  color: "red",
-};
+
+const canvas = document.getElementById("canvas");
+// const score = document.querySelector('.score')
+
+
+function update() {
+  pacman.color = "yellow";
+  fruit.color = "#00ff00";
+  if (collision(pacman, fruit)) {
+    pacman.color = "#ff1493";
+    fruit.color = "#ff1493";
+  }
+}
 
 const ctx = canvas.getContext("2d");
 // draw on our canvas a circle at x and y
@@ -43,30 +33,54 @@ function drawCircle(x, y, radius, fill, stroke, strokeWidth) {
   }
 }
 
+
+
 // clear the canvas and redraw the game objects for every frame
 function draw() {
+
+  if(paused) return
   // clear the canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   // draw pacman
   drawCircle(pacman.x, pacman.y, pacman.w, pacman.color);
   pacman.x += 0;
   inky.x += 0;
-  pacman.draw();
+  fruit.x += 0;
+  // draw enemy
+  pacman.move();
+  // change update name
+  update();
   drawCircle(inky.x, inky.y, inky.w, inky.color);
+  inky.moveTowardsPlayer();
 
+  // draw fruit
+  drawCircle(fruit.x, fruit.y, fruit.w, fruit.color);
   // prevent pacman from going out of bounds
-  if (pacman.x < 0) pacman.x = 0;
+  if (pacman.x <= 0) pacman.x = 0;
   if (pacman.x > canvas.width - pacman.w) pacman.x = canvas.width - pacman.w;
+  if (pacman.y <= 0) pacman.y = 0;
+  if (pacman.y > canvas.height - pacman.h) pacman.y = canvas.height - pacman.y;
+
+  // keep enemy in canvas
+  if (inky.x <= 0) inky.x = 0;
+  if (inky.x > canvas.width - inky.w) inky.x = canvas.width - inky.w;
+  if (inky.y <= 0) inky.y = 0;
+  if (inky.y > canvas.height - inky.h) inky.y = canvas.height - inky.h;
+  //
+  // if (fruit.x <= 0) fruit.x = 0;
+  // if (fruit.x > canvas.width - fruit.w) fruit.x = canvas.width - fruit.w;
+  // if (fruit.y <= 0) fruit.y = 0;
+  // if (fruit.y > canvas.height - fruit.h) fruit.y = canvas.height - fruit.h;
+
   // call the draw function again next frame
   window.requestAnimationFrame(draw);
-
-  context.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-// event listener for mario inputs
+// event listener for pacman inputs
 window.addEventListener("keydown", (e) => {
   // stop the event from bubbling  (stop the key presses from doing what they normally do)
   e.preventDefault();
+  console.log(e.key);
   // if arrow key is pressed move marios relative cardinal direction
   if (e.key === "ArrowUp") {
     pacman.up = true;
@@ -102,28 +116,22 @@ window.addEventListener("keyup", (e) => {
 });
 
 draw();
+// getDistance();
+// collision();
 
-// let img = new Image();
-// img.src = 'blue-sprite.png'
-// menu
+const gameContainer = document.querySelector(".game-play");
+const mainMenu = document.querySelector(".front-page");
+const start = document.getElementById("start-B");
+// call the draw function again next frame
+// window.requestAnimationFrame(draw)
+
+// hide main-menu
 // event listener
-// when button is clicked
-// hide menu
-// start the game
-
-const startButton = document.querySelector("#start-button");
-const gameContainer = document.querySelector(".game-container");
-const mainMenu = document.querySelector(".main-menu");
-
-startButton.addEventListener("click", () => {
-  // hide main-menu
+start.addEventListener("click", () => {
   mainMenu.classList.add("hidden");
   // show game
   gameContainer.classList.remove("hidden");
-  startPlaying();
+  // START THE GAME 
+  setPaused(false)
+  draw()
 });
-
-function startPlaying() {
-//  displaying a virtual alert box
- alert("May The Odds Be Ever In Your Favor!");
- }

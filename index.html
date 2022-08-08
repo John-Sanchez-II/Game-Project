@@ -4,23 +4,27 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap"
+      rel="stylesheet"
+    />
     <title>Pac-Man</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="style.css" />
+    <script type = "module" src="Main.js" defer></script>
   </head>
 
   <body>
-  
-    <div class="game-container hidden">
-      <canvas id="canvas" width=1500 height=800>(Fallback Content)</canvas>
-
-   
-      
-      
+    
+    <div class="game-play hidden">
+      <div class="score">Score:0</div>
+      <canvas id="canvas" width="1200" height="800">(Fallback Content)</canvas>
     </div>
 
-    <div class="main-menu">
+    <div class="front-page">
       <button id="howToPlay" onclick="show()">How To Play</button>
 
       <script>
@@ -35,9 +39,9 @@
         }
       </script>
 
-      <button id="start-button" onclick="startPlaying">Start</button>
+      <button id="start-B" >Start</button>
     </div>
 
-    <script src="script.js"></script>
+    
   </body>
 </html>
